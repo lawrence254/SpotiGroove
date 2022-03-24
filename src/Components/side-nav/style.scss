@@ -1,0 +1,35 @@
+$primary: #FAFBFC;
+$backwhite: #FFF;
+$peach: #CEAEA5;
+$accent:#D8CED2;
+$red: #e10805;
+$dark:#5f6577;
+
+*{
+    color:$dark
+    
+}
+.side{
+    height: 100vh;
+    margin-left: 2%;
+    padding: 15px;
+    align-content: flex-start;
+    border-right: 1px solid rgba(95, 101, 119, .3) ;
+    ul{
+        list-style-type: none;
+        li{
+        padding: 15px;
+        align-content: flex-start;
+        }
+    }
+    .section-title{
+        color: $dark;
+        opacity: .7;
+        font-size: .7rem;
+        text-align: start;
+        margin-left: 6%;
+    }
+    svg{
+       margin-right: 15px; 
+    }
+}
