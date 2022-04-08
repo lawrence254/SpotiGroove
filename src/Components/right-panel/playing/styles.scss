@@ -1,0 +1,33 @@
+.currentlyPlaying{
+    padding: 2%;
+    max-width: 90%;
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+
+    img{
+        max-width: 80%;
+        max-height: 80%;
+        border-radius: 5%;
+
+    }
+
+    .songDetails{
+        position: relative;
+        .song-title{
+            font-weight: 700;
+            color: #0B1733;
+        }
+        .artist{
+            margin-top: 0;
+            padding: 0;
+
+        }
+        .likes{
+            position: absolute;
+            top: 20%;
+            right: 0;
+            margin-right: 12%;
+        }
+    }
+}

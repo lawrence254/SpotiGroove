@@ -1,0 +1,22 @@
+.panel{
+    height: 100vh;
+    border-left: 1px solid rgba(95, 101, 119, .3) ;
+    padding: 5%;
+    position: relative;
+
+    .divider{
+        display: flex;
+        margin-left: 2%;
+
+        p{
+            color: #0B1733;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        a{
+            margin-top: 7%;
+            text-decoration: none;
+            margin-left: 25%;
+        }
+    }
+}
