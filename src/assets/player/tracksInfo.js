@@ -7,7 +7,7 @@ import light from './music/light.mp3'
 import numbers from './music/numbers.mp3'
 
 // All of these artists are at https://pixabay.com/music/search/mood/laid%20back/
-export default [
+export const Music = [
     {
         title: "Cali",
         artist: "Wataboi",
