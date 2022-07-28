@@ -1,0 +1,22 @@
+$editBackColor: #D8CED2;
+.navContainer{
+    position: relative;
+    margin-top: 2%;
+    height: 5%;
+    .navi{
+        position: absolute;
+        left: 0;
+        top: 30%;
+        margin-left: 3%;
+        .forward{
+            margin-left: 1.3rem;
+        }
+    }
+    .searchBar{
+        margin-left: 12%;
+        margin-right: 8%;
+
+        #searchBar{
+        }
+    }
+}

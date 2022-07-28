@@ -8,7 +8,7 @@ import SideNav from './Components/side-nav/SideNav';
 function App() {
   return (
     <div className="App">
-      <Grid container spacing={2}>
+      <Grid container spacing={4}>
       <Grid item sm={3}>
       <SideNav/>
       </Grid>

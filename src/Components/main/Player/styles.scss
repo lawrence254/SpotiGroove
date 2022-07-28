@@ -1,0 +1,62 @@
+.controls{
+    position: relative;
+    margin-top: 4%;
+    border-top: 1px solid rgba(95, 101, 119, .3);
+
+
+    .mainControls{
+        position: relative;
+        padding: 5% 5% 0 5%;
+        .queueList{
+            position: absolute;
+            left: 0;
+            margin-left: 8%;
+        }
+        .mainPlayer *{
+            margin: 0 2%;
+        }
+        .volumeControl{
+            position: absolute;
+            width: 20%;
+            right: 0;
+            margin-right: 5%;
+            .volDown{
+                position: absolute;
+                margin-top: .1rem;
+                left: 0;
+            }
+    
+            .volume{
+                width: 60%;
+                top: 0;
+            }
+    
+            .volUp{
+                position: absolute;
+                right: 0;
+                margin-top: .1rem;
+            }
+        }
+    
+    }
+    .scrub{
+        margin:0 5% ;
+        position: relative;
+    
+        .startTime{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .scrobbler{
+           margin-top: 1.3%;
+           width: 80%;
+        }
+        .endTime{
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+    
+}
