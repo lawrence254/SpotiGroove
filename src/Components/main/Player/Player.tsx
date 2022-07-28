@@ -20,8 +20,6 @@ const Player = (tracks : Tracks) => {
     const [trackProgress, setTrackProgress] = useState(0);
     const [trackIndex, setTrackIndex] = useState(0)
 
-    const tracksLength = tracks.length;
-
     const { audioSrc } = tracks[trackIndex];
     // Required Refs to access media player controls and lower level functions. https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement/Audio
     const audioRef = useRef(new Audio(audioSrc));
