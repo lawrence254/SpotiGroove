@@ -5,6 +5,11 @@ import Main from './Components/main/Main';
 import RightMenu from './Components/right-panel/RightMenu';
 import SideNav from './Components/side-nav/SideNav';
 
+
+/**
+ * Design inspiration: @link https://dribbble.com/shots/16856425-SazheSound-Music-Player
+ * @returns
+ */
 function App() {
   return (
     <div className="App">
