@@ -1,0 +1,45 @@
+.songItem{
+    font-size: 1.2em;
+    width: 100%;
+    align-items: center;
+    vertical-align: middle;
+    
+    .trackNumber{
+        float: left;
+        margin-left: 5%;
+        right: 0;
+    }
+    .artistImage{
+        max-width: 50px;
+        float:left;
+        margin-left: 5%;
+        right: 0;
+    }
+    .songTitle{
+        float: left;
+        margin-left: 5%;
+        right: 0;
+        width: 15%;
+        max-width: 15%;
+    }
+    .plays{
+        float: left;
+        margin-left: 5%;
+        right: 0;
+        width: 15%;
+        max-width: 15%;
+    }
+    .time{
+        float: left;
+        margin-left: 5%;
+        right: 0;
+        width: 15%;
+        max-width: 15%;
+    }
+    .albumName{
+        float: left;
+        margin-left: 5%;
+        width: 15%;
+        max-width: 15%;
+    }
+}
