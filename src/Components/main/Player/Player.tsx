@@ -1,7 +1,7 @@
 import QueueMusicRoundedIcon from '@mui/icons-material/QueueMusicRounded';
 import VolumeMuteRoundedIcon from '@mui/icons-material/VolumeMuteRounded';
 import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded';
-import { Slider } from '@mui/material';
+import { LinearProgress,linearProgressClasses, Slider, styled } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 import { Value } from 'sass';
 import PlayerControls from './PlayerControls';
@@ -43,7 +43,7 @@ const Player = (tracks : Tracks) => {
             } else {
                 setTrackProgress(audioRef.current.currentTime);
             }
-        }, 1000);
+        });
     };
 
     const onScrub = (event: Event, value: number) => {
@@ -71,7 +71,6 @@ const Player = (tracks : Tracks) => {
     };
 
     const toNext = () => {
-        console.log("Length of tracks", Object.keys(tracks).length)
         if (trackIndex < Object.keys(tracks).length - 1) {
             setTrackIndex(trackIndex + 1);
         } else {
@@ -109,6 +108,19 @@ const Player = (tracks : Tracks) => {
         }
     }, [])
 
+    //Styled progress
+    const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+        height:10,
+        borderRadius: 5,
+        [`&.${linearProgressClasses.colorPrimary}`]: {
+            backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
+        },
+        [`& .${linearProgressClasses.bar}`]: {
+            borderRadius: 5,
+            backgroundColor: theme.palette.mode === 'light' ? '#1a90ff' : '#308fe8',
+        },
+    }));
+
     return (
         <div className="controls">
             <div className="mainControls">
@@ -131,12 +143,16 @@ const Player = (tracks : Tracks) => {
             </div>
             <div className="scrub">
                 <p className="startTime">{trackProgress.toFixed(2)}</p>
-                <Slider className='scrobbler'
+                {/* <Slider className='scrobbler'
                 min={0}
                 max={Number(duration.toFixed(2) ? duration.toFixed(2) : `${duration.toFixed(2)}`)}
                 step={0.05}
                 value={trackProgress}
-                onChange={(e)=>onScrub(e, trackProgress)}
+                // onChange={(e)=>onScrub(e, trackProgress)}
+                 /> */}
+                 <BorderLinearProgress className='scrobbler'
+                    variant="determinate"
+                    value={trackProgress}
                  />
                 <p className="endTime">{duration.toFixed(2)}</p>
             </div>

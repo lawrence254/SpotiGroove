@@ -41,20 +41,23 @@
     }
     .scrub{
         margin:0 5% ;
-        position: relative;
+        position: absolute;
+        width: 80%;
     
         .startTime{
             position: absolute;
             left: 0;
-            top: 0;
+            margin-top: 0;
         }
         .scrobbler{
            margin-top: 1.3%;
            width: 80%;
+           margin-left: 10%;
         }
         .endTime{
             position: absolute;
             right: 0;
+            margin-top: 0;
             top: 0;
         }
     }
