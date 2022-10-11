@@ -44,7 +44,9 @@ const authCallback = async (str: string) => {
 
     }).then((result: any) => {
         tokens = result.data;
-        console.log(result)
+        localStorage.setItem('access_token', result.data.access_token)
+        localStorage.setItem('refresh_token', result.data.refresh_token)
+        console.log(result, result.data.access_token)
     }).catch((err: string) => {
         console.log(err);
     })

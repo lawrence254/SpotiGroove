@@ -1,10 +1,9 @@
 import { Grid } from '@mui/material';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, createContext, ContextType, Provider } from 'react';
 import './App.css';
 import Main from './Components/main/Main';
 import RightMenu from './Components/right-panel/RightMenu';
 import SideNav from './Components/side-nav/SideNav';
-import {createContext} from 'react';
 
 
 /**
@@ -12,11 +11,17 @@ import {createContext} from 'react';
  * @returns
  */
 
-export const LoginContext = createContext({status:false, auth_token:'', refresh_token:''})
-
 function App() {
+  const [authToken, setAuthToken] = useState('');
+  const [refreshToken, setRefreshToken] = useState('');
 
-  let loginData = { status: false, auth_token: '', refresh_token: '' };
+  useEffect(()=>{
+    let access_token = localStorage.getItem('access_token')||'';
+    let refresh_token = localStorage.getItem('refresh_token')||'';
+    setAuthToken(access_token);
+    setRefreshToken(refresh_token);
+  
+  },[authToken])
   return (
     <div className="App">
       <Grid container spacing={4}>
@@ -27,13 +32,13 @@ function App() {
       <Main/>
       </Grid>
       <Grid item sm={3}>
-      <LoginContext.Provider value={loginData}>
-      {<RightMenu/>}
-    </LoginContext.Provider>
+      <RightMenu token={{authToken}}/>
       </Grid>
       </Grid>
     </div>
   );
+
 }
 
 export default App;
+
