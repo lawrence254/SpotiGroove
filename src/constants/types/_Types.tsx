@@ -1,4 +1,4 @@
-export interface Track {
+export type Track ={
     album:             TrackAlbum;
     artists:           TrackArtist[];
     available_markets: string[];

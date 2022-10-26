@@ -6,34 +6,16 @@ import { AUTHORIZE_URL, AUTH_TOKEN, CLIENT_ID, RandomStateSeed, REDIRECT_URI } f
 let initScopes = ['user-read-email, user-library-read']
 const axios = require('axios');
 var qs = require('querystringify');
+const refreshTime = Date.now() + 3599995;
 
-export let tokens:any
+export let tokens: any
 let cde: any;
 let nPopUp: any;
-// const authRequest = async () => {
-//     let requestBody = {
-//         response_type: 'code',
-//         client_id: CLIENT_ID,
-//         scope: initScopes,
-//         redirect_uri: REDIRECT_URI,
-//         state: RandomStateSeed,
-//         show_dialog: false
-//     };
 
-//     try {
-//         let auth_response = await axios.get(AUTHORIZE_URL, qs.stringify(requestBody)).then(async (res: any) =>
-//              await createPopUp()
-//         )
-//         console.log(auth_response)
-//         return auth_response;
-//     } catch (e) {
-//         console.log(e)
-//     };
-// }
 const authCallback = async (str: string) => {
     var params = new URLSearchParams()
-    params.append('code',str)
-    params.append('redirect_uri',REDIRECT_URI);
+    params.append('code', str)
+    params.append('redirect_uri', REDIRECT_URI);
     params.append('grant_type', 'authorization_code')
 
     await axios.post('https://accounts.spotify.com/api/token', params, {
@@ -46,11 +28,30 @@ const authCallback = async (str: string) => {
         tokens = result.data;
         localStorage.setItem('access_token', result.data.access_token)
         localStorage.setItem('refresh_token', result.data.refresh_token)
+        localStorage.setItem('refresh_time', refreshTime.toString())
         console.log(result, result.data.access_token)
     }).catch((err: string) => {
         console.log(err);
     })
 }
+
+export const requestRefreshToken = async () => {
+    await axios.post('https://accounts.spotify.com/api/token', {
+        form: {
+            grant_type: 'refresh_token',
+            refresh_token: localStorage.getItem('refresh_token')
+        }, json: true,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Basic ' + AUTH_TOKEN
+        }
+    }).then((result: any) => {
+        localStorage.setItem('access_token', result.data.access_token)
+    }).catch((err: string) => {
+        console.log('Fetcing Refresh Token Failed: ' + err)
+    });
+}
+
 export const createPopUp = async () => {
     nPopUp = window.open(`${AUTHORIZE_URL}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${initScopes.join(
         "%20"

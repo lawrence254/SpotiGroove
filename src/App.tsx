@@ -1,9 +1,10 @@
 import { Grid } from '@mui/material';
-import React, { useEffect, useState, createContext, ContextType, Provider } from 'react';
+import React, { useEffect, useState} from 'react';
 import './App.css';
 import Main from './Components/main/Main';
 import RightMenu from './Components/right-panel/RightMenu';
 import SideNav from './Components/side-nav/SideNav';
+import { createPopUp, requestRefreshToken } from './services/LoginService';
 
 
 /**
@@ -14,10 +15,12 @@ import SideNav from './Components/side-nav/SideNav';
 function App() {
   const [authToken, setAuthToken] = useState('');
   const [refreshToken, setRefreshToken] = useState('');
-
+  const refTime = Number(localStorage.getItem('refresh_time'))
   useEffect(()=>{
     let access_token = localStorage.getItem('access_token')||'';
     let refresh_token = localStorage.getItem('refresh_token')||'';
+    !access_token || null ? createPopUp() : setAuthToken(access_token);
+    if (Date.now() > refTime) requestRefreshToken();
     setAuthToken(access_token);
     setRefreshToken(refresh_token);
   
